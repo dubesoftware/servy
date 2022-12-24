@@ -20,3 +20,5 @@ Bears, Lions, Tigers
 """
 
 response = Servy.Handler.handle(request)
+
+IO.puts response
