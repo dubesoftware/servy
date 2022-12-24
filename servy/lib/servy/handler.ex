@@ -1,4 +1,6 @@
 defmodule Servy.Handler do
+  def handle(request) do
+  end
 end
 
 request = """
