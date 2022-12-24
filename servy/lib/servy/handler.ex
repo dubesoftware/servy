@@ -18,3 +18,5 @@ Content-Length: 20
 
 Bears, Lions, Tigers
 """
+
+response = Servy.Handler.handle(request)
