@@ -28,11 +28,11 @@ defmodule Servy.Handler do
   end
 
   def route(conv, "GET", "/wildthings") do
-    %{ conv | resp_body: "Bears, Lions, Tigers" }
+    %{ conv | status: 200, resp_body: "Bears, Lions, Tigers" }
   end
 
   def route(conv, "GET", "/bears") do
-    %{ conv | resp_body: "Teddy, Smokey, Paddington" }
+    %{ conv | status: 200, resp_body: "Teddy, Smokey, Paddington" }
   end
 
   def route(conv, _method, path) do
