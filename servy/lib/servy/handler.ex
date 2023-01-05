@@ -15,7 +15,12 @@ defmodule Servy.Handler do
         |> String.split("\n")
         |> List.first
         |> String.split(" ")
-    %{ method: method, path: path, resp_body: "" }
+    %{
+      method: method,
+      path: path,
+      resp_body: "",
+      status: nil
+    }
   end
 
   def route(conv) do
