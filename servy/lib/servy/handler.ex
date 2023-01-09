@@ -65,7 +65,7 @@ defmodule Servy.Handler do
   end
 
   def route(%{ method: "DELETE", path: "/bears/" <> _id } = conv) do
-    %{ conv | status: 403, resp_body: "Deleting a bear is forbidden!"}
+    %{ conv | status: 403, resp_body: "Bears must never be deleted!"}
   end
 
   def route(%{ path: path } = conv) do
