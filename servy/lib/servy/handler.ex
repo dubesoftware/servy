@@ -14,6 +14,8 @@ defmodule Servy.Handler do
     conv
   end
 
+  def track(conv), do: conv
+
   def rewrite_path(%{path: "/wildlife"} = conv) do
     %{ conv | path: "/wildthings" }
   end
