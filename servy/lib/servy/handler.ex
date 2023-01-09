@@ -5,7 +5,13 @@ defmodule Servy.Handler do
     |> rewrite_path
     |> log
 		|> route
+    |> track
 		|> format_response
+  end
+
+  def track(%{status: 404, path: path} = conv) do
+    IO.puts "Warning: #{path} is on the loose!"
+    conv
   end
 
   def rewrite_path(%{path: "/wildlife"} = conv) do
