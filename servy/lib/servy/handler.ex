@@ -32,7 +32,7 @@ defmodule Servy.Handler do
     %{ conv | path: "/wildthings" }
   end
 
-  def rewrite_path(%{path: path} = conv) do
+  def rewrite_path(%{path: "/bears?id=" <> id} = conv) do
     regex = ~r{\/(?<thing>\w+)\?id=(?<id>\d+)}
     captures = Regex.named_captures(regex, path)
     rewrite_path_captures(conv, captures)
