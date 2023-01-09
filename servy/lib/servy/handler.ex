@@ -38,27 +38,27 @@ defmodule Servy.Handler do
     }
   end
 
-  # def route(conv) do
-  #   route(conv, conv.method, conv.path)
-  # end
+  def route(conv) do
+    route(conv, conv.method, conv.path)
+  end
 
-  def route(%{ method: "GET", path: "/wildthings" } = conv) do
+  def route(conv, "GET", "/wildthings") do
     %{ conv | status: 200, resp_body: "Bears, Lions, Tigers" }
   end
 
-  def route(%{ method: "GET", path: "/bears" } = conv) do
+  def route(conv, "GET", "/bears") do
     %{ conv | status: 200, resp_body: "Teddy, Smokey, Paddington" }
   end
 
-  def route(%{ method: "GET", path: "/bears/" <> id } = conv) do
+  def route(conv, "GET", "/bears/" <> id) do
     %{ conv | status: 200, resp_body: "Bear #{id}" }
   end
 
-  def route(%{ method: "DELETE", path: "/bears/" <> _id } = conv) do
+  def route(conv, "DELETE", "/bears/" <> _id) do
     %{ conv | status: 403, resp_body: "Deleting a bear is forbidden!"}
   end
 
-  def route(%{ path: path } = conv) do
+  def route(conv, _method, path) do
     %{ conv | status: 404, resp_body: "No #{path} here!" }
   end
 
