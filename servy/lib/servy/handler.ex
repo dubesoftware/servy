@@ -1,4 +1,6 @@
 defmodule Servy.Handler do
+  require Logger
+  
   def handle(request) do
     request
 		|> parse
@@ -44,7 +46,7 @@ defmodule Servy.Handler do
   
   def rewrite_path_captures(conv, nil), do: conv
 
-  def log(conv), do: IO.inspect conv
+  def log(conv), do: Logger.info "Logging the conversation map: #{conv}"
 
   def parse(request) do
     [method, path, _] =
