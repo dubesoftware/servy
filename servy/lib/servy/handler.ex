@@ -46,7 +46,10 @@ defmodule Servy.Handler do
   
   def rewrite_path_captures(conv, nil), do: conv
 
-  def log(conv), do: IO.inspect conv
+  def log(conv) do
+    Logger.info "Inspecting conversation map..."
+    IO.inspect conv
+  end
 
   def parse(request) do
     [method, path, _] =
