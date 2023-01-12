@@ -81,7 +81,7 @@ defmodule Servy.Handler do
     %{ conv | status: 403, resp_body: "Bears must never be deleted!"}
   end
 
-  def route(%{ method: "GET", path: "/about" } = conv) do
+  def route(%{method: "GET", path: "/about"} = conv) do
     %{ conv | status: 200, resp_body: "contents of file" }
   end
 
