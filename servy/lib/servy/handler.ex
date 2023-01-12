@@ -82,7 +82,7 @@ defmodule Servy.Handler do
   end
 
   def route(%{method: "GET", path: "/about"} = conv) do
-    %{ conv | status: 200, resp_body: "contents of file" }
+    %{ conv | status:200, resp_body: "contents of file" }
   end
 
   def route(%{ path: path } = conv) do
