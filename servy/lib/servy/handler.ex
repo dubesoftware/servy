@@ -90,8 +90,6 @@ defmodule Servy.Handler do
       {:error, reason} ->
         %{ conv | status: 500, resp_body: "File error: #{reason}" }
     end
-    
-    %{ conv | status: 200, resp_body: "contents of file" }
   end
 
   def route(%{ path: path } = conv) do
