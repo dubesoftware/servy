@@ -81,6 +81,13 @@ defmodule Servy.Handler do
     %{ conv | status: 403, resp_body: "Bears must never be deleted!"}
   end
 
+  def route(%{ method: "GET", path: "/bears/new" } = conv) do
+    Path.expand("../../pages", __DIR__)
+      |> Path.join("form.html")
+      |> File.read
+      |> handle_file(conv)
+  end
+
   def route(%{ method: "GET", path: "/about" } = conv) do
     Path.expand("../../pages", __DIR__)
       |> Path.join("about.html")
