@@ -2,6 +2,7 @@ defmodule Servy.Handler do
   require Logger
   
   def handle(request) do
+    separator
     request
 		|> parse
     |> rewrite_path
@@ -10,6 +11,10 @@ defmodule Servy.Handler do
     |> emojify
     |> track
 		|> format_response
+  end
+
+  def separator do
+    Logger.info "--------------------"
   end
 
   def parse(request) do
