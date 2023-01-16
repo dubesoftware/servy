@@ -2,7 +2,7 @@ defmodule Servy.Handler do
   require Logger
   
   def handle(request) do
-    separator
+    separator()
     request
 		|> parse
     |> rewrite_path
