@@ -2,7 +2,6 @@ defmodule Servy.Handler do
   require Logger
   
   def handle(request) do
-    separator()
     request
 		|> parse
     |> rewrite_path
@@ -11,10 +10,6 @@ defmodule Servy.Handler do
     |> emojify
     |> track
 		|> format_response
-  end
-
-  def separator do
-    Logger.info "--------------------"
   end
 
   def parse(request) do
@@ -152,6 +147,8 @@ defmodule Servy.Handler do
   end
 end
 
+IO.puts "********************"
+
 request = """
 GET /wildthings HTTP/1.1
 Host: example.com
@@ -163,6 +160,8 @@ Accept: */*
 response = Servy.Handler.handle(request)
 
 IO.puts response
+
+IO.puts "********************"
 
 request = """
 GET /bears HTTP/1.1
@@ -176,6 +175,8 @@ response = Servy.Handler.handle(request)
 
 IO.puts response
 
+IO.puts "********************"
+
 request = """
 GET /bears/1 HTTP/1.1
 Host: example.com
@@ -187,6 +188,8 @@ Accept: */*
 response = Servy.Handler.handle(request)
 
 IO.puts response
+
+IO.puts "********************"
 
 request = """
 DELETE /bears/1 HTTP/1.1
@@ -200,6 +203,8 @@ response = Servy.Handler.handle(request)
 
 IO.puts response
 
+IO.puts "********************"
+
 request = """
 GET /bigfoot HTTP/1.1
 Host: example.com
@@ -211,6 +216,8 @@ Accept: */*
 response = Servy.Handler.handle(request)
 
 IO.puts response
+
+IO.puts "********************"
 
 request = """
 GET /wildlife HTTP/1.1
@@ -224,6 +231,8 @@ response = Servy.Handler.handle(request)
 
 IO.puts response
 
+IO.puts "********************"
+
 request = """
 GET /bears?id=1 HTTP/1.1
 Host: example.com
@@ -236,6 +245,8 @@ response = Servy.Handler.handle(request)
 
 IO.puts response
 
+IO.puts "********************"
+
 request = """
 GET /about HTTP/1.1
 Host: example.com
@@ -247,6 +258,8 @@ Accept: */*
 response = Servy.Handler.handle(request)
 
 IO.puts response
+
+IO.puts "********************"
 
 request = """
 GET /bears/new HTTP/1.1
