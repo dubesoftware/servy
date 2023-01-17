@@ -17,6 +17,20 @@ defmodule Servy.Handler do
 		|> format_response
   end
 
+  def parse(request) do
+    [method, path, _] =
+      request
+        |> String.split("\n")
+        |> List.first
+        |> String.split(" ")
+    %{
+      method: method,
+      path: path,
+      resp_body: "",
+      status: nil
+    }
+  end
+
   def route(%{ method: "GET", path: "/wildthings" } = conv) do
     %{ conv | status: 200, resp_body: "Bears, Lions, Tigers" }
   end
