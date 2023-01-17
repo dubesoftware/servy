@@ -61,7 +61,6 @@ defmodule Servy.Handler do
   end
 
   def route(%{ method: "GET", path: "/bears/new" } = conv) do
-    IO.puts "HERE"
     pages_path = Path.expand("../../pages", __DIR__)
     file = Path.join(pages_path, "form.html")
     
