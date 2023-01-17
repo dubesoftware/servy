@@ -61,8 +61,7 @@ defmodule Servy.Handler do
   end
 
   def route(%{ method: "GET", path: "/bears/new" } = conv) do
-    pages_path = Path.expand("../../pages", __DIR__)
-    file = Path.join(pages_path, "form.html")
+    file = Path.join(@pages_path, "form.html")
     
     case File.read(file) do
       {:ok, content} ->
@@ -83,14 +82,14 @@ defmodule Servy.Handler do
   end
 
   def route(%{ method: "GET", path: "/pages/" <> file } =  conv) do
-    Path.expand("../../pages", __DIR__)
+    @pages_path
     |> Path.join(file <> ".html")
     |> File.read
     |> handle_file(conv)
   end
 
   def route(%{ method: "GET", path: "/about" } = conv) do
-    Path.expand("../../pages", __DIR__)
+    @pages_path
       |> Path.join("about.html")
       |> File.read
       |> handle_file(conv)
