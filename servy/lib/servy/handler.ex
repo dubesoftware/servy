@@ -1,33 +1,5 @@
-defmodule Servy.Handler do
-	@moduledoc "Handles HTTP requests."
+defmodule Servy.Plugins do
   require Logger
-  @pages_path Path.expand("../../pages", __DIR__)
-  
-  @doc "Transforms the request into a response."
-	def handle(request) do
-    request
-		|> parse
-    |> rewrite_path
-    |> log
-		|> route
-    |> emojify
-    |> track
-		|> format_response
-  end
-
-  def parse(request) do
-    [method, path, _] =
-      request
-        |> String.split("\n")
-        |> List.first
-        |> String.split(" ")
-    %{
-      method: method,
-      path: path,
-      resp_body: "",
-      status: nil
-    }
-  end
 
   def rewrite_path(%{path: "/wildlife"} = conv) do
     %{ conv | path: "/wildthings" }
@@ -50,6 +22,45 @@ defmodule Servy.Handler do
   def log(conv) do
     Logger.info "Inspecting conversation map..."
     IO.inspect conv
+  end
+
+  def track(%{status: 404, path: path} = conv) do
+    IO.puts "Warning: #{path} is on the loose!"
+    conv
+  end
+
+  def track(conv), do: conv
+end
+
+defmodule Servy.Handler do
+	@moduledoc "Handles HTTP requests."
+
+  @pages_path Path.expand("../../pages", __DIR__)
+  
+  @doc "Transforms the request into a response."
+	def handle(request) do
+    request
+		|> parse
+    |> Servy.Plugins.rewrite_path
+    |> Servy.Plugins.log
+		|> route
+    |> emojify
+    |> Servy.Plugins.track
+		|> format_response
+  end
+
+  def parse(request) do
+    [method, path, _] =
+      request
+        |> String.split("\n")
+        |> List.first
+        |> String.split(" ")
+    %{
+      method: method,
+      path: path,
+      resp_body: "",
+      status: nil
+    }
   end
 
   def route(%{ method: "GET", path: "/wildthings" } = conv) do
@@ -107,13 +118,6 @@ defmodule Servy.Handler do
   end
 
   def emojify(conv), do: conv
-
-  def track(%{status: 404, path: path} = conv) do
-    IO.puts "Warning: #{path} is on the loose!"
-    conv
-  end
-
-  def track(conv), do: conv
 
   def format_response(conv) do
     """
