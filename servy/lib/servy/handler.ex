@@ -1,7 +1,9 @@
 defmodule Servy.Handler do
+	@moduledoc "Handles HTTP requests."
   require Logger
   
-  def handle(request) do
+  @doc "Transforms the request into a response."
+	def handle(request) do
     request
 		|> parse
     |> rewrite_path
