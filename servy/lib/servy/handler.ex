@@ -1,6 +1,7 @@
 defmodule Servy.Handler do
 	@moduledoc "Handles HTTP requests."
   require Logger
+  @pages_path Path.expand("../../pages", __DIR__)
   
   @doc "Transforms the request into a response."
 	def handle(request) do
