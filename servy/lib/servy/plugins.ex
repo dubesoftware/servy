@@ -1,5 +1,5 @@
 defmodule Servy.Plugins do
-  require Logger
+  import Logger
 
   def rewrite_path(%{path: "/wildlife"} = conv) do
       %{ conv | path: "/wildthings" }
