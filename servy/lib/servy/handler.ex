@@ -7,15 +7,15 @@ defmodule Servy.Handler do
   import Servy.Parser, only: [parse: 1]
   
   @doc "Transforms the request into a response."
-	def handle(request) do
+  def handle(request) do
     request
-		|> parse
+    |> parse
     |> rewrite_path
     |> log
-		|> route
+    |> route
     |> emojify
     |> track
-		|> format_response
+    |> format_response
   end
 
   def route(%{ method: "GET", path: "/wildthings" } = conv) do
