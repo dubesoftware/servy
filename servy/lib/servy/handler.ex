@@ -222,4 +222,3 @@ Accept: */*
 response = Servy.Handler.handle(request)
 
 IO.puts response
-
