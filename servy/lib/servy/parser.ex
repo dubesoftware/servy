@@ -1,4 +1,7 @@
 defmodule Servy.Parser do
+
+  alias Servy.Conv
+
   def parse(request) do
     [method, path, _] =
       request
