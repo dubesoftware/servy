@@ -77,7 +77,7 @@ defmodule Servy.Handler do
 
   def emojify(conv), do: conv
 
-  def format_response(conv) do
+  def format_response(%Conv{} = conv) do
     """
     HTTP/1.1 #{conv.status} #{status_reason(conv.status)}
     Content-Type: text/html
