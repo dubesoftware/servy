@@ -8,7 +8,7 @@ defmodule Servy.Parser do
         |> String.split("\n")
         |> List.first
         |> String.split(" ")
-    %Servy.Conv{
+    %Conv{
       method: method,
       path: path
     }
