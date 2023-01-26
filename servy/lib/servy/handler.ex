@@ -32,6 +32,10 @@ defmodule Servy.Handler do
     %{ conv | status: 200, resp_body: "Bears, Lions, Tigers" }
   end
 
+  def route(%Conv{ method: "POST", path: "/bears" } = conv) do
+    %{ conv | status: 201, resp_body: "Created a #{conv.params["type"]} bear named #{conv.params["name"]}!" }
+  end
+
   def route(%Conv{ method: "GET", path: "/bears" } = conv) do
     %{ conv | status: 200, resp_body: "Teddy, Smokey, Paddington" }
   end
@@ -55,10 +59,6 @@ defmodule Servy.Handler do
 
   def route(%Conv{ method: "GET", path: "/bears/" <> id } = conv) do
     %{ conv | status: 200, resp_body: "Bear #{id}" }
-  end
-
-  def route(%Conv{ method: "POST", path: "/bears" } = conv) do
-    %{ conv | status: 201, resp_body: "Create a bear!" }
   end
 
   def route(%Conv{ method: "GET", path: "/about" } = conv) do
