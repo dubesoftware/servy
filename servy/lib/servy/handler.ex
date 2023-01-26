@@ -57,6 +57,10 @@ defmodule Servy.Handler do
     %{ conv | status: 200, resp_body: "Bear #{id}" }
   end
 
+  def route(%Conv{ method: "POST", path: "/bears" } = conv) do
+    %{ conv | status: 201, resp_body: "Create a bear!" }
+  end
+
   def route(%Conv{ method: "GET", path: "/about" } = conv) do
     @pages_path
       |> Path.join("about.html")
