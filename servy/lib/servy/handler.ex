@@ -221,7 +221,7 @@ IO.puts response
 IO.puts "********************"
 
 request = """
-GET /bears HTTP/1.1
+POST /bears HTTP/1.1
 Host: example.com
 User-Agent: ExampleBrowser/1.0
 Accept: */*
