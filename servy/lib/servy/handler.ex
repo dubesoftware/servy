@@ -218,6 +218,8 @@ response = Servy.Handler.handle(request)
 
 IO.puts response
 
+IO.puts "********************"
+
 request = """
 GET /bears HTTP/1.1
 Host: example.com
