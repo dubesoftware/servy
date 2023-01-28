@@ -7,12 +7,14 @@ defmodule Servy.Parser do
     [request_line | header_lines] = String.split(top, "\n")
     [method, path, _] = String.split(request_line, " ")
 
+    headers = parse_headers(header_lines)
     params = parse_params(params_string)
 
     %Conv{
       method: method,
       path: path,
       params: params
+      headers: headers
     }
   end
 
