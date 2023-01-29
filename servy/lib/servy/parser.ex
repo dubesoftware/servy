@@ -13,7 +13,7 @@ defmodule Servy.Parser do
     %Conv{
       method: method,
       path: path,
-      params: params
+      params: params,
       headers: headers
     }
   end
@@ -23,7 +23,7 @@ defmodule Servy.Parser do
   end
   
   def parse_headers([]), do: IO.puts "Done!"
-  
+
   def parse_params(params_string) do
     params_string |> String.trim |> URI.decode_query
   end
