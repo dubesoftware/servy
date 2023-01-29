@@ -8,4 +8,4 @@ defmodule Servy.Recurse do
   def sum([], total), do: total
 end
   
-IO.puts Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
+IO.inspect Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
