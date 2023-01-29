@@ -21,10 +21,6 @@ defmodule Servy.Parser do
   def parse_headers([head | tail]) do
     parse_headers(tail)
   end
-  
-  def parse_headers([]), do
-    IO.puts "Done!"
-  end
 
   def parse_params(params_string) do
     params_string |> String.trim |> URI.decode_query
