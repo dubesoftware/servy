@@ -19,6 +19,7 @@ defmodule Servy.Parser do
   end
 
   def parse_headers([head | tail]) do
+    IO.puts "Head: #{inspect(head)}, Tail: #{inspect(tail)}"
     parse_headers(tail)
   end
   
