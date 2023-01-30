@@ -14,6 +14,14 @@ defmodule Servy.Recurse do
   end
 
   def triple([], tripled), do: List.flatten(tripled)
+
+  def square([head | tail], squared) do
+    IO.puts "Head: #{inspect(head)} Tail: #{inspect(tail)}"
+    squared = [squared, head ** 2]
+    square(tail, squared)
+  end
+
+  def square([], squared), do: squared
 end
   
 IO.inspect Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
