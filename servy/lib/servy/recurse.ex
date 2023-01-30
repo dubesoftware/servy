@@ -21,9 +21,11 @@ defmodule Servy.Recurse do
     square(tail, squared)
   end
 
-  def square([], squared), do: squared
+  def square([], squared), do: List.flatten(squared)
 end
   
 IO.inspect Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
 
 IO.inspect Servy.Recurse.triple([1, 2, 3, 4, 5], [])
+
+IO.inspect Servy.Recurse.square([1, 2, 3, 4, 5], [])
