@@ -2,6 +2,7 @@ defmodule Servy.Handler do
 	@moduledoc "Handles HTTP requests."
 
   alias Servy.Conv
+  alias Servy.BearController
 
   @pages_path Path.expand("../../pages", File.cwd!)
 
