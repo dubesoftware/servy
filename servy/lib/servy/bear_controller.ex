@@ -5,10 +5,6 @@ defmodule Servy.BearController do
 
   @templates_path Path.expand("../../templates", File.cwd!)
 
-  def bear_item(bear) do
-    "<li>#{bear.name} - #{bear.type}</li>"
-  end
-
   def index(conv) do
     items =
       Wildthings.list_bears()
