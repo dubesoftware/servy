@@ -1,3 +1,7 @@
 defmodule Servy.Capture do
-  add = fn(a, b) -> a + b end
+  def add do
+    fn(a, b) -> a + b end
+  end
 end
+
+IO.inspect Servy.Capture.add.(1, 2)
