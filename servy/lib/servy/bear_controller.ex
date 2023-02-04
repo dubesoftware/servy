@@ -9,7 +9,6 @@ defmodule Servy.BearController do
     items =
       Wildthings.list_bears()
       |> Enum.sort(&Bear.order_asc_by_name/2)
-      |> Enum.join 
 
     %{ conv | status: 200, resp_body: "<ul>#{items}</ul>" }
   end
