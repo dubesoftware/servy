@@ -8,8 +8,7 @@ defmodule Servy.Capture do
   end
 
   def duplicate_string do
-    fn(s, n) -> String.duplicate(s, n)
-  end
+    fn(s, n) -> String.duplicate(s, n) end
   end
 end
 
