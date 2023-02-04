@@ -3,6 +3,8 @@ defmodule Servy.BearController do
   alias Servy.Wildthings
   alias Servy.Bear
 
+  @templates_path Path.expand("../../templates", File.cwd!)
+
   def bear_item(bear) do
     "<li>#{bear.name} - #{bear.type}</li>"
   end
