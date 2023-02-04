@@ -2,12 +2,16 @@ defmodule Servy.BearController do
 
   alias Servy.Wildthings
 
+  def bear_item(bear) do
+    "<li>#{bear.name} - #{bear.type}</li>"
+  end
+
   def index(conv) do
     items =
       Wildthings.list_bears()
       |> Enum.filter(fn(b) -> b.type == "Grizzly" end)
       |> Enum.sort(fn(b1, b2) -> b1.name <= b2.name end)
-      |> Enum.map(fn(b) -> "<li>#{b.name} - #{b.type}</li>" end)
+      |> Enum.map(fn(b) -> bear_item(b) end)
       |> Enum.join 
 
     %{ conv | status: 200, resp_body: "<ul>#{items}</ul>" }
