@@ -12,7 +12,6 @@ defmodule Servy.BearController do
   def index(conv) do
     items =
       Wildthings.list_bears()
-      |> Enum.filter(&Bear.is_grizzly/1)
       |> Enum.sort(&Bear.order_asc_by_name/2)
       |> Enum.map(&bear_item/1)
       |> Enum.join 
