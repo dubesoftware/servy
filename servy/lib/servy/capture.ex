@@ -7,17 +7,17 @@ defmodule Servy.Capture do
     &(&1 + &2)
   end
 
-  def duplicate_string do
-    fn(s, n) -> String.duplicate(s, n) end
+  def repeat do
+    &String.duplicate(&1, &2)
   end
 
-  def shorthand_duplicate_string do
-    &(String.duplicate(&1, &2))
+  def shorthand_repeat do
+    &String.duplicate/2
   end
 end
 
 IO.inspect Servy.Capture.add.(1, 2)
 IO.inspect Servy.Capture.shorthand_add.(3, 4)
 
-IO.inspect Servy.Capture.duplicate_string.("Hello, world!", 1)
-IO.inspect Servy.Capture.shorthand_duplicate_string.("Hello, world!", 2)
+IO.inspect Servy.Capture.repeat.("Hello, world!", 1)
+IO.inspect Servy.Capture.shorthand_repeat.("Hello, world!", 2)
