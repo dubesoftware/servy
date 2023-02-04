@@ -7,6 +7,10 @@ defmodule Servy.Recurse do
 
   def sum([], total), do: total
 
+  def enum_sum(items) do
+    Enum.sum(items)
+  end
+
   def triple([head | tail], tripled) do
     IO.puts "Head: #{head} Tail: #{inspect(tail)}"
     tripled = [tripled, head * 3]
@@ -25,6 +29,8 @@ defmodule Servy.Recurse do
 end
   
 IO.inspect Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
+
+IO.inspect Servy.Recurse.enum_sum([1, 2, 3, 4, 5])
 
 IO.inspect Servy.Recurse.triple([1, 2, 3, 4, 5], [])
 
