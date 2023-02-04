@@ -26,6 +26,12 @@ defmodule Servy.Recurse do
   end
 
   def square([], squared), do: List.flatten(squared)
+
+  def my_map([head | tail], func) do
+    [func.(head) | my_map(tail, func)]
+  end
+
+  def my_map([], _func), do: []
 end
   
 IO.inspect Servy.Recurse.sum([1, 2, 3, 4, 5], 0)
