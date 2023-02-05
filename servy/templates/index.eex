@@ -5,3 +5,5 @@
   <li>Name - Grizzly</li>
   <li>Name - Polar</li>
 </ul>
+
+<%= inspect(bears) %>
