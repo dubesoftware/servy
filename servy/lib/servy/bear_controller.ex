@@ -3,7 +3,7 @@ defmodule Servy.BearController do
   alias Servy.Wildthings
   alias Servy.Bear
 
-  @templates_path Path.expand("../../templates", File.cwd!)
+  @templates_path Path.expand("../../templates", __DIR__)
 
   def index(conv) do
     bears =
