@@ -20,23 +20,13 @@ defmodule Servy.BearController do
       Wildthings.list_bears()
       |> Enum.sort(&Bear.order_asc_by_name/2)
 
-      content =
-        @templates_path
-        |> Path.join("index.eex")
-        |> EEx.eval_file(bears: bears)
-
-    %{ conv | status: 200, resp_body: content }
+      render(conv, "index.eex", bears: bears)
   end
 
   def show(conv, %{"id" => id}) do
     bear = Wildthings.get_bear(id)
 
-    content =
-        @templates_path
-        |> Path.join("show.eex")
-        |> EEx.eval_file(bear: bear)
-    
-    %{ conv | status: 200, resp_body: content }
+    render(conv, "show.eex", bear: bear)
   end
 
   def create(conv, %{"name" => name, "type" => type} = params) do
