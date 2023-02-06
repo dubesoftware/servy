@@ -5,6 +5,16 @@ defmodule Servy.BearController do
 
   @templates_path Path.expand("../../templates", __DIR__)
 
+  
+  defp render(conv, template, bindings \\ []) do
+    content =
+        @templates_path
+        |> Path.join(template)
+        |> EEx.eval_file(bindings)
+    
+    %{ conv | status: 200, resp_body: content }
+  end
+
   def index(conv) do
     bears =
       Wildthings.list_bears()
