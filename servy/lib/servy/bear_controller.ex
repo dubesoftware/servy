@@ -2,7 +2,8 @@ defmodule Servy.BearController do
 
   alias Servy.Wildthings
   alias Servy.Bear
-  alias Servy.View
+
+  import Servy.View, only: [render: 3]
 
   def index(conv) do
     bears =
