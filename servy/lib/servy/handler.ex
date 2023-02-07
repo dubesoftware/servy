@@ -17,7 +17,6 @@ defmodule Servy.Handler do
     |> rewrite_path
     |> log
     |> route
-    |> emojify
     |> track
     |> format_response
   end
