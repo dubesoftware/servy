@@ -1,5 +1,5 @@
 defmodule Servy do
-  def hello(name) do
+  def hello(name \\ "world") do
     "Howdy, #{name}!"
   end
 end
