@@ -22,6 +22,13 @@ defmodule Servy.Handler do
     |> format_response
   end
 
+  def route(%Conv{ method: "GET", path: "/pages/" <> file } =  conv) do
+    @pages_path
+    |> Path.join(file <> ".html")
+    |> File.read
+    |> handle_file(conv)
+  end
+
   def route(%Conv{ method: "GET", path: "/wildthings" } = conv) do
     %{ conv | status: 200, resp_body: "Bears, Lions, Tigers" }
   end
