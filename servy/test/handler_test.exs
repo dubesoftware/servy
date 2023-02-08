@@ -1,5 +1,5 @@
 defmodule HandlerTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
 
   import Servy.Handler, only: [handle: 1]
 

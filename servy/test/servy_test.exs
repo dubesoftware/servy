@@ -1,5 +1,5 @@
 defmodule ServyTest do
-  use ExUnit.Case async: true
+  use ExUnit.Case
   doctest Servy
 
   test "the truth" do
