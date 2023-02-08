@@ -85,6 +85,15 @@ defmodule Servy.Handler do
     %{ conv | status: 500, resp_body: "File error: #{reason}" }
   end
 
+  def emojify(%{status: 200} = conv) do
+    emojies = String.duplicate("🎉", 5)
+    body = emojies <> "\n" <> conv.resp_body <> "\n" <> emojies
+    
+    %{ conv | resp_body: body }
+  end
+
+  def emojify(conv), do: conv
+
   def format_response(%Conv{} = conv) do
     """
     HTTP/1.1 #{Conv.full_status(conv)}\r
