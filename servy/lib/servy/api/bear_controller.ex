@@ -10,8 +10,8 @@ defmodule Servy.Api.BearController do
     %{ conv | status: 200, resp_body: json }
   end
 
-  defp put_resp_content_type(conv, content_type) do
-    new_headers = Map.put(conv, "Content-Type", content_type)
+  defp put_resp_content_type(conv, type) do
+    new_headers = Map.put(conv, "Content-Type", type)
     %{ conv | resp_headers: new_headers }
   end
 
