@@ -99,11 +99,6 @@ defmodule Servy.Handler do
 
   def emojify(conv), do: conv
 
-  def put_content_length(conv) do
-    new_headers = Map.put(conv.resp_headers, "Content-Length", String.length(conv.resp_body))
-    %{ conv | resp_headers: new_headers }
-  end
-
   def format_response(%Conv{} = conv) do
     """
     HTTP/1.1 #{Conv.full_status(conv)}\r
