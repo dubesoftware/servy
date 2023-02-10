@@ -104,6 +104,12 @@ defmodule Servy.Handler do
     %{ conv | resp_headers: new_headers }
   end
 
+  defp format_response_headers(conv) do
+    Enum.map(conv.resp_headers, fn {key, value} ->
+      "#{key}: #{value}\r"
+    end) |> Enum.sort |> Enum.reverse |> Enum.join("\n")
+  end
+
   def format_response(%Conv{} = conv) do
     """
     HTTP/1.1 #{Conv.full_status(conv)}\r
