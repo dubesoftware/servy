@@ -1,6 +1,8 @@
 defmodule Servy.Wildthings do
   alias Servy.Bear
 
+  @bears_path Path.expand("../../db", __DIR__)
+  
   def list_bears do
     [
       %Bear{id: 1, name: "Teddy", type: "Brown", hibernating: true},
