@@ -111,6 +111,12 @@ defmodule Servy.Handler do
 
   def emojify(conv), do: conv
 
+  def markdown_to_html(%Conv{status: 200} = conv) do
+    %{ conv | resp_body: Earmark.as_html!(conv.resp_body) }
+  end
+  
+  def markdown_to_html(%Conv{} = conv), do: conv
+
   def put_content_length(conv) do
     new_headers = Map.put(conv.resp_headers, "Content-Length", String.length(conv.resp_body))
     %{ conv | resp_headers: new_headers }
