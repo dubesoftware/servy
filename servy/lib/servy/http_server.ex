@@ -45,6 +45,7 @@ defmodule Servy.HttpServer do
   sends a response back over the same socket.
   """
   def serve(client_socket) do
+    IO.puts "#{self()}"
     client_socket
     |> read_request
     |> Servy.Handler.handle
