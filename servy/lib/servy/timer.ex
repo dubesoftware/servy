@@ -9,5 +9,3 @@ defmodule Servy.Timer do
   end
 
 end
-
-:timer.sleep(:infinity)
