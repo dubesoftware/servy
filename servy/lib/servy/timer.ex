@@ -1,7 +1,7 @@
 defmodule Servy.Timer do
   
-  def remind(reminder, seconds_in_future) do
-    seconds_in_future
+  def remind(reminder, seconds) do
+    seconds
       |> String.to_integer
       |> :timer.sleep
     
