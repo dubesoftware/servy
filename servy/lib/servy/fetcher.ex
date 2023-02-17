@@ -8,7 +8,7 @@ defmodule Servy.Fetcher do
   def get_result(pid) do
     receive do 
       {^pid, :result, value} -> value
-    after 2000 ->
+    after :timer.seconds(2) ->
       raise "Timed out!"
     end
   end
