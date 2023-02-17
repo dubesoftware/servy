@@ -24,7 +24,7 @@ defmodule Servy.Handler do
     |> format_response
   end
 
-  def route(%Conv{method: "GET", path: "/snapshots"} = conv) do
+  def route(%Conv{method: "GET", path: "/sensors"} = conv) do
     Fetcher.async(fn -> VideoCam.get_snapshot("cam-1") end)
     Fetcher.async(fn -> VideoCam.get_snapshot("cam-2") end)
     Fetcher.async(fn -> VideoCam.get_snapshot("cam-3") end)
