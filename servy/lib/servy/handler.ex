@@ -33,6 +33,7 @@ defmodule Servy.Handler do
     snapshot1 = Fetcher.get_result()
     snapshot2 = Fetcher.get_result()
     snapshot3 = Fetcher.get_result()
+    where_is_bigfoot = Fetcher.get_result()
     
     snapshots = [snapshot1, snapshot2, snapshot3]
 
