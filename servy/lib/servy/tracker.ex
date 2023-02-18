@@ -7,7 +7,7 @@ defmodule Servy.Tracker do
     # CODE GOES HERE TO SEND A REQUEST TO THE EXTERNAL API
 
     # Sleep to simulate the API delay:
-    :timer.sleep(:timer.seconds(0.5))
+    :timer.sleep(500)
 
     # Example responses returned from the API:
     locations = %{
