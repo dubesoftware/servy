@@ -7,4 +7,11 @@ defmodule Servy.PledgeController do
     %{ conv | status: 201, resp_body: "#{name} pledged #{amount}!" }
   end
 
+  def index(conv) do
+    # Gets the recent pledges form the cache
+    pledges = recent_pledges()
+
+    %{ conv | status: 200, resp_body: (inspect pledges) }
+  end
+
 end
