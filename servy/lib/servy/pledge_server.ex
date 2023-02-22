@@ -1,9 +1,9 @@
 defmodule Servy.PledgeServer do
   def create_pledge(name, amount) do
-    # Create pledge here
+    %{:ok, id} = send_pledge_to_service(name, amount)
   end
 
-  def recent_pledges() do
+  defp send_pledge_to_service(_name, _amount) do
     # Return recent pledges from cache here
   end
 end
