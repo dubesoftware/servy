@@ -1,6 +1,6 @@
 defmodule Servy.PledgeServer do
   def create_pledge(name, amount) do
-    %{:ok, id} = send_pledge_to_service(name, amount)
+    {:ok, id} = send_pledge_to_service(name, amount)
 		
 		# Cache the pledge:
 		[ {"larry", 10} ]
@@ -13,6 +13,6 @@ defmodule Servy.PledgeServer do
 
   defp send_pledge_to_service(_name, _amount) do
     # Send pledge to external service:
-		%{:ok, "pledge-#{:rand.uniform(1000)}}"}
+		{:ok, "pledge-#{:rand.uniform(1000)}}"}
   end
 end
