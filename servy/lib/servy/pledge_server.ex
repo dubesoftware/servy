@@ -36,7 +36,7 @@ defmodule Servy.PledgeServer do
 			{sender, message} ->
 				{response, new_state} = handle_call(message, state)
 				send sender, {:response, response}
-				listen_loop(new_state)
+				listen_loop(state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
 				listen_loop(state)
