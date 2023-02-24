@@ -12,15 +12,15 @@ defmodule Servy.PledgeServer do
 	end
 
   def create_pledge(name, amount) do
-    send @name, {self(), :create_pledge, name, amount}
+    call @name, {:create_pledge, name, amount}
   end
 
   def recent_pledges do
-		send @name, {self(), :recent_pledges}
+		call @name, :recent_pledges
   end
 	
   def total_pledged do
-		send @name, {self(), :total_pledged}
+		call @name, :total_pledged
   end
 	
 	def call(pid, message) do
