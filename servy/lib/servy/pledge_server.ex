@@ -14,6 +14,8 @@ defmodule Servy.PledgeServer do
 	
 	@name __MODULE__
 	
+	alias Servy.GenericServer
+	
 	# Client Interface
 	
 	def start(initial_state \\ []) do
