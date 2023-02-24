@@ -59,6 +59,10 @@ defmodule Servy.PledgeServer do
     end
   end
 	
+	def handle_cast(:clear, _state) do
+		[]
+	end
+	
 	def handle_call(:total_pledged, state) do
 		total = Enum.map(state, &elem(&1, 1)) |> Enum.sum
 		{total, state}
