@@ -43,6 +43,4 @@ PledgeServer.create_pledge(pid, "curly", 30)
 PledgeServer.create_pledge(pid, "daisy", 40)
 PledgeServer.create_pledge(pid, "grace", 50)
 
-send(pid, {self(), :recent_pledges})
-
-receive do {:response, pledges} -> IO.inspect(pledges) end
+IO.inspect PledgeServer.recent_pledges(pid)
