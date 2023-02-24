@@ -29,6 +29,12 @@ defmodule Servy.PledgeServer do
 		receive do {:response, total} -> total end
   end
 	
+	def call(pid, message) do
+    send pid, {self(), message}
+		
+		receive do {:response, response} -> response end
+	end
+	
 	# Server
 	
   def listen_loop(state) do
