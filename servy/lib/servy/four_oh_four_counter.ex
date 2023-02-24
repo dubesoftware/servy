@@ -12,41 +12,65 @@ defmodule Servy.FourOhFourCounter do
   end
 
   def bump_count(path) do
-    send @name, {self(), :bump_count, path}
-
-    receive do {:response, count} -> count end
+    call @name, {:bump_count, path}
   end
 
   def get_counts do
-    send @name, {self(), :get_counts}
-
-    receive do {:response, counts} -> counts end
+    call @name, :get_counts
   end
 
   def get_count(path) do
-    send @name, {self(), :get_count, path}
+    call @name, {:get_count, path}
+  end
 
-    receive do {:response, count} -> count end
+  def reset do
+    cast @name, :reset
+  end
+
+  # Helper Functions
+
+  def call(pid, message) do
+    send pid, {:call, self(), message}
+
+    receive do {:response, response} -> response end
+  end
+
+  def cast(pid, message) do
+    send pid, {:cast, message}
   end
 
   # Server
 
   def listen_loop(state) do
     receive do
-      {sender, :bump_count, path} ->
-        new_state = Map.update(state, path, 1, &(&1 + 1))
-        send sender, {:response, Map.get(new_state, path)}
+      {:call, sender, message} when is_pid(sender) ->
+        {response, new_state} = handle_call(message, state)
+        send sender, {:response, response}
         listen_loop(new_state)
-      {sender, :get_counts} ->
-        send sender, {:response, state}
-        listen_loop(state)
-      {sender, :get_count, path} ->
-        count = Map.get(state, path, 0)
-        send sender, {:response, count}
-        listen_loop(state)
+      {:cast, message} ->
+        new_state = handle_cast(message, state)
+        listen_loop(new_state)
       unexpected ->
-        IO.puts "Unexpected message: #{inspect unexpected}"
+        IO.puts "Unexpected messaged: #{inspect unexpected}"
         listen_loop(state)
     end
+  end
+
+  def handle_call({:bump_count, path}, state) do
+    new_state = Map.update(state, path, 1, &(&1 + 1))
+    {:ok, new_state}
+  end
+
+  def handle_call(:get_counts, state) do
+    {state, state}
+  end
+
+  def handle_call({:get_count, path}, state) do
+    count = Map.get(state, path, 0)
+    {count, state}
+  end
+
+  def handle_cast(:reset, _state) do
+    %{}
   end
 end
