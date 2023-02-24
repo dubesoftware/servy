@@ -56,6 +56,13 @@ defmodule Servy.PledgeServer do
 	def handle_call(:recent_pledges, state) do
 		state
 	end
+	
+	def handle_call({:create_pledge, name, amount}) do
+    {:ok, id} = send_pledge_to_service(name, amount)
+		most_recent_pledges = Enum.take(state, 2)
+    new_state = [{name, amount} | most_recent_pledges]
+		id
+	end
 
   defp send_pledge_to_service(_name, _amount) do
     {:ok, "pledge-#{:rand.uniform(1000)}"}
