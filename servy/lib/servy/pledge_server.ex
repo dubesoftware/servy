@@ -21,10 +21,11 @@ defmodule Servy.PledgeServer do
     send(pid, {:create_pledge, name, amount})
   end
 
-  # def recent_pledges do
-  # 	# Returns the most recent pledges (cache):
-  # 	[ {"larry", 10} ]
-  # end
+  def recent_pledges(pid) do
+		send pid, {self(), :recent_pledges}
+
+		receive do {:response, pledges} -> pledges end
+  end
 
   defp send_pledge_to_service(_name, _amount) do
     # Send pledge to external service:
@@ -44,6 +45,4 @@ PledgeServer.create_pledge(pid, "grace", 50)
 
 send(pid, {self(), :recent_pledges})
 
-receive do
-  {:response, pledges} -> IO.inspect(pledges)
-end
+receive do {:response, pledges} -> IO.inspect(pledges) end
