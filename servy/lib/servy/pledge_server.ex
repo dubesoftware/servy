@@ -55,7 +55,7 @@ defmodule Servy.PledgeServer do
     {:ok, id} = send_pledge_to_service(name, amount)
 		most_recent_pledges = Enum.take(state, 2)
     new_state = [{name, amount} | most_recent_pledges]
-		id
+		{id, new_state}
 	end
 
   defp send_pledge_to_service(_name, _amount) do
