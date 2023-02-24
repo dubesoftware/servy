@@ -50,9 +50,6 @@ defmodule Servy.PledgeServer do
 			message ->
 				new_state = handle_cast(message, state)
 				listen_loop(new_state)
-			:clear ->
-				new_state = []
-				listen_loop(new_state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
 				listen_loop(state)
