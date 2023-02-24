@@ -49,7 +49,7 @@ defmodule Servy.PledgeServer do
 	end
 	
 	def handle_call(:recent_pledges, state) do
-		state
+		{state, state}
 	end
 	
 	def handle_call({:create_pledge, name, amount}, state) do
