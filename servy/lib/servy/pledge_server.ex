@@ -6,7 +6,7 @@ defmodule Servy.PledgeServer do
       {:create_pledge, name, amount} ->
         {:ok, id} = send_pledge_to_service(name, amount)
 				most_recent_pledges = Enum.take(state, 2)
-        new_state = [{name, amount} | state]
+        new_state = [{name, amount} | most_recent_pledges]
         IO.puts("#{name} pledged #{amount}!")
         IO.puts("New state is #{inspect(new_state)}")
         listen_loop(new_state)
