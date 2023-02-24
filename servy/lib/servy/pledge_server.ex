@@ -5,7 +5,6 @@ defmodule Servy.PledgeServer do
 	end
 	
   def listen_loop(state) do
-
     receive do
       {sender, :create_pledge, name, amount} ->
         {:ok, id} = send_pledge_to_service(name, amount)
