@@ -23,6 +23,8 @@ defmodule Servy.PledgeServer do
 		receive do {:response, pledges} -> pledges end
   end
 	
+	# Server
+	
   def listen_loop(state) do
     receive do
       {sender, :create_pledge, name, amount} ->
