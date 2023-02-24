@@ -33,7 +33,7 @@ defmodule Servy.PledgeServer do
 	
   def listen_loop(state) do
     receive do
-      {sender, :create_pledge, name, amount} ->
+      {sender, {:create_pledge, name, amount}} ->
         {:ok, id} = send_pledge_to_service(name, amount)
 				most_recent_pledges = Enum.take(state, 2)
         new_state = [{name, amount} | most_recent_pledges]
