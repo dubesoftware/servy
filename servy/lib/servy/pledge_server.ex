@@ -60,7 +60,7 @@ defmodule Servy.PledgeServer do
 		GenericServer.cast @name, :clear
 	end
 	
-	# Server
+	# Server Callbacks
 	
 	def handle_cast(:clear, _state) do
 		[]
