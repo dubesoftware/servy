@@ -26,19 +26,19 @@ defmodule Servy.PledgeServer do
 	end
 
   def create_pledge(name, amount) do
-    call @name, {:create_pledge, name, amount}
+    GenericServer.call @name, {:create_pledge, name, amount}
   end
 
   def recent_pledges do
-		call @name, :recent_pledges
+		GenericServer.call @name, :recent_pledges
   end
 	
   def total_pledged do
-		call @name, :total_pledged
+		GenericServer.call @name, :total_pledged
   end
 	
 	def clear do
-		cast @name, :clear
+		GenericServer.cast @name, :clear
 	end
 	
 	# Server
