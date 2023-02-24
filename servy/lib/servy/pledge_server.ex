@@ -20,13 +20,13 @@ defmodule Servy.GenericServer do
 			{:call, sender, message} when is_pid(sender) ->
 				{response, new_state} = callback_module.handle_call(message, state)
 				send sender, {:response, response}
-				listen_loop(new_state)
+				listen_loop(new_state, callback_module)
 			{:cast, message} ->
 				new_state = callback_module.handle_cast(message, state)
-				listen_loop(new_state)
+				listen_loop(new_state, callback_module)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
-				listen_loop(state)
+				listen_loop(state, callback_module)
     end
   end
 end
