@@ -57,6 +57,10 @@ defmodule Servy.PledgeServer do
 				listen_loop(state)
     end
   end
+	
+	def handle_call(:total_pledged, state) do
+		total = Enum.map(state, &elem(&1, 1)) |> Enum.sum
+	end
 
   defp send_pledge_to_service(_name, _amount) do
     {:ok, "pledge-#{:rand.uniform(1000)}"}
