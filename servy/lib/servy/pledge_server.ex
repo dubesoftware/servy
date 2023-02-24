@@ -15,7 +15,7 @@ defmodule Servy.GenericServer do
 		send pid, {:cast, message}
 	end
 	
-  def listen_loop(state) do
+  def listen_loop(state, callback_module) do
     receive do
 			{:call, sender, message} when is_pid(sender) ->
 				{response, new_state} = callback_module.handle_call(message, state)
