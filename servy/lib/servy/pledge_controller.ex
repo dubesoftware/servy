@@ -14,4 +14,8 @@ defmodule Servy.PledgeController do
 
     render(conv, "recent_pledges.eex", pledges: pledges)
   end
+	
+	def new(conv) do
+	  render(conv, "new_pledge.eex")
+	end
 end
