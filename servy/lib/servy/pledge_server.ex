@@ -1,5 +1,5 @@
 defmodule Servy.GenericServer do
-	def start(initial_state, name) do
+	def start(callback_module, initial_state, name) do
 		pid = spawn(__MODULE__, :listen_loop, [initial_state])
 		Process.register(pid, name)
 		pid
