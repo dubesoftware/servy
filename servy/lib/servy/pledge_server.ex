@@ -12,11 +12,11 @@ defmodule Servy.GenericServer do
   def listen_loop(state) do
     receive do
 			{:call, sender, message} when is_pid(sender) ->
-				{response, new_state} = handle_call(message, state)
+				{response, new_state} = Servy.PledgeServer.handle_call(message, state)
 				send sender, {:response, response}
 				listen_loop(new_state)
 			{:cast, message} ->
-				new_state = handle_cast(message, state)
+				new_state = Servy.PledgeServer.handle_cast(message, state)
 				listen_loop(new_state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
