@@ -41,7 +41,7 @@ defmodule Servy.PledgeServer do
 	
 	def start do
 		IO.puts "Starting the pledge server..."
-		GenericServer.start([], @name)
+		GenericServer.start(__MODULE__, [], @name)
 	end
 
   def create_pledge(name, amount) do
