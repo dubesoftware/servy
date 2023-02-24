@@ -23,10 +23,6 @@ defmodule Servy.PledgeServer do
 		call @name, :total_pledged
   end
 	
-	def clear do
-		send @name, :clear
-	end
-	
 	def call(pid, message) do
     send pid, {self(), message}
 		
