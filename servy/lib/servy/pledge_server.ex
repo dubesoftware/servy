@@ -37,10 +37,10 @@ alias Servy.PledgeServer
 
 pid = spawn(PledgeServer, :listen_loop, [[]])
 
-PledgeServer.create_pledge(pid, "larry", 10)
-PledgeServer.create_pledge(pid, "moe", 20)
-PledgeServer.create_pledge(pid, "curly", 30)
-PledgeServer.create_pledge(pid, "daisy", 40)
-PledgeServer.create_pledge(pid, "grace", 50)
+IO.inspect PledgeServer.create_pledge(pid, "larry", 10)
+IO.inspect PledgeServer.create_pledge(pid, "moe", 20)
+IO.inspect PledgeServer.create_pledge(pid, "curly", 30)
+IO.inspect PledgeServer.create_pledge(pid, "daisy", 40)
+IO.inspect PledgeServer.create_pledge(pid, "grace", 50)
 
 IO.inspect PledgeServer.recent_pledges(pid)
