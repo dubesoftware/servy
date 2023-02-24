@@ -27,10 +27,16 @@ defmodule Servy.PledgeServer do
 		send @name, :clear
 	end
 	
+	# Helper functions
+	
 	def call(pid, message) do
     send pid, {self(), message}
 		
 		receive do {:response, response} -> response end
+	end
+	
+	def cast(pid, message) do
+		send pid, message
 	end
 	
 	# Server
