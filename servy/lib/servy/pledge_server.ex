@@ -15,13 +15,11 @@ defmodule Servy.PledgeServer do
 				listen_loop(state)
 		end
 	end
-	#   def create_pledge(name, amount) do
-	#     {:ok, id} = send_pledge_to_service(name, amount)
-	#
-	# 	# Cache the pledge:
-	# 	[ {"larry", 10} ]
-	#   end
-	#
+	
+  def create_pledge(pid, name, amount) do
+    send pid, {:create_pledge, name, amount}
+  end
+
 	# def recent_pledges do
 	# 	# Returns the most recent pledges (cache):
 	# 	[ {"larry", 10} ]
