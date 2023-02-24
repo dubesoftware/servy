@@ -34,7 +34,6 @@ defmodule Servy.PledgeServer do
   end
 
   defp send_pledge_to_service(_name, _amount) do
-    # Send pledge to external service:
     {:ok, "pledge-#{:rand.uniform(1000)}"}
   end
 end
