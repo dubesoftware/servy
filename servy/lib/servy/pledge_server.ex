@@ -24,7 +24,7 @@ defmodule Servy.PledgeServer do
   end
 	
 	def clear do
-		send @name, :clear
+		cast @name, :clear
 	end
 	
 	# Helper functions
