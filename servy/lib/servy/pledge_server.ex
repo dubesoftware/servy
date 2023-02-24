@@ -37,12 +37,6 @@ defmodule Servy.PledgeServer do
 				response = handle_call(message, state)
 				send sender, {:response, response}
 				listen_loop(state)
-      {sender, {:create_pledge, name, amount}} ->
-        {:ok, id} = send_pledge_to_service(name, amount)
-				most_recent_pledges = Enum.take(state, 2)
-        new_state = [{name, amount} | most_recent_pledges]
-				send sender, {:response, id}
-        listen_loop(new_state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
 				listen_loop(state)
