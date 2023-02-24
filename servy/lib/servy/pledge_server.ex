@@ -56,3 +56,5 @@ IO.inspect PledgeServer.create_pledge("daisy", 40)
 IO.inspect PledgeServer.create_pledge("grace", 50)
 
 IO.inspect PledgeServer.recent_pledges()
+
+IO.inspect PledgeServer.total_pledged()
