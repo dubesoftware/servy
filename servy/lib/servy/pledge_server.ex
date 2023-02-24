@@ -2,6 +2,8 @@ defmodule Servy.PledgeServer do
 	def start do
 		IO.puts "Starting the pledge server..."
 		pid = spawn(__MODULE__, :listen_loop, [[]])
+		Process.register(pid, :pledge_server)
+		pid
 	end
 	
   def listen_loop(state) do
@@ -41,10 +43,10 @@ alias Servy.PledgeServer
 
 pid = PledgeServer.start()
 
-IO.inspect PledgeServer.create_pledge(pid, "larry", 10)
-IO.inspect PledgeServer.create_pledge(pid, "moe", 20)
-IO.inspect PledgeServer.create_pledge(pid, "curly", 30)
-IO.inspect PledgeServer.create_pledge(pid, "daisy", 40)
-IO.inspect PledgeServer.create_pledge(pid, "grace", 50)
+IO.inspect PledgeServer.create_pledge("larry", 10)
+IO.inspect PledgeServer.create_pledge("moe", 20)
+IO.inspect PledgeServer.create_pledge("curly", 30)
+IO.inspect PledgeServer.create_pledge("daisy", 40)
+IO.inspect PledgeServer.create_pledge("grace", 50)
 
-IO.inspect PledgeServer.recent_pledges(pid)
+IO.inspect PledgeServer.recent_pledges()
