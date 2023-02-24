@@ -39,7 +39,7 @@ defmodule Servy.PledgeServer do
 				listen_loop(new_state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
-				listen_loop(new_state)
+				listen_loop(state)
     end
   end
 	
