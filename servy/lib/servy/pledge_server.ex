@@ -1,17 +1,3 @@
-defmodule Servy.GenericServer do
-	# Helper functions
-	
-	def call(pid, message) do
-    send pid, {:call, self(), message}
-		
-		receive do {:response, response} -> response end
-	end
-	
-	def cast(pid, message) do
-		send pid, {:cast, message}
-	end
-end
-
 defmodule Servy.PledgeServer do
 	
 	@name __MODULE__
@@ -39,6 +25,18 @@ defmodule Servy.PledgeServer do
 	
 	def clear do
 		cast @name, :clear
+	end
+	
+	# Helper functions
+	
+	def call(pid, message) do
+    send pid, {:call, self(), message}
+		
+		receive do {:response, response} -> response end
+	end
+	
+	def cast(pid, message) do
+		send pid, {:cast, message}
 	end
 	
 	# Server
