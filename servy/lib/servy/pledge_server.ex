@@ -45,14 +45,9 @@ defmodule Servy.PledgeServer do
         new_state = [{name, amount} | most_recent_pledges]
 				send sender, {:response, id}
         listen_loop(new_state)
-
       {sender, :recent_pledges} ->
         send(sender, {:response, state})
         listen_loop(state)
-			{sender, :total_pledged} ->
-				total = Enum.map(state, &elem(&1, 1)) |> Enum.sum
-				send sender, {:response, total}
-				listen_loop(state)
 			unexpected ->
 				IO.puts "Unexpected message: #{inspect unexpected}"
 				listen_loop(state)
