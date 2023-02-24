@@ -34,6 +34,7 @@ defmodule Servy.PledgeServer do
   def listen_loop(state) do
 		
 		{sender, message} ->
+			response = handle_call(message, state)
 			send sender, {:response, response}
 			listen_loop(state)
 		
