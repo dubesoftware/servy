@@ -64,7 +64,7 @@ end
 
 alias Servy.PledgeServer
 
-pid = PledgeServer.start()
+{:ok, pid} = PledgeServer.start()
 
 #send pid, {:stop, "hammertime"}
 
