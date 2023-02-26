@@ -1,6 +1,6 @@
 defmodule Servy.PledgeServer do
 	
-	@name __MODULE__
+	@name :pledge_server
 	
 	alias Servy.GenericServer
 	
