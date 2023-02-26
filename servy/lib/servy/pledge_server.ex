@@ -30,7 +30,7 @@ defmodule Servy.PledgeServer do
 	# Server Callbacks
 	
 	def handle_cast(:clear, _state) do
-		[]
+		{:noreply, []}
 	end
 	
 	def handle_call(:total_pledged, state) do
