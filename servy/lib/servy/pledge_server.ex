@@ -52,6 +52,13 @@ defmodule Servy.PledgeServer do
   defp send_pledge_to_service(_name, _amount) do
     {:ok, "pledge-#{:rand.uniform(1000)}"}
   end
+
+	defp fetch_recent_pledges_from_service do
+		# Fetch recent pledges from external service
+
+		# Example return value
+		[ {"wilma", 15}, {"fred", 25} ]
+	end
 end
 
 alias Servy.PledgeServer
