@@ -30,10 +30,6 @@ defmodule Servy.PledgeServer do
 	def clear do
 		GenServer.cast @name, :clear
 	end
-
-	def set_cache_size(size) do
-		GenServer.cast @name, {:set_cache_size, size}
-	end
 	
 	# Server Callbacks
 	
