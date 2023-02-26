@@ -5,7 +5,7 @@ defmodule Servy.PledgeServer do
 	use GenServer
 
 	defmodule State do
-		
+		defstruct cache_size: 3, pledges: [] 
 	end
 	
 	# Client Interface
