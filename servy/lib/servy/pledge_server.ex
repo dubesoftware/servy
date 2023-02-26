@@ -8,7 +8,7 @@ defmodule Servy.PledgeServer do
 	
 	def start do
 		IO.puts "Starting the pledge server..."
-		GenServer.start(__MODULE__, [], name: @name)
+		GenServer.start(__MODULE__, %{cache_size: 3, pledges: []}, name: @name)
 	end
 
   def create_pledge(name, amount) do
