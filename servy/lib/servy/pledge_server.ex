@@ -2,8 +2,6 @@ defmodule Servy.PledgeServer do
 	
 	@name :pledge_server
 	
-	alias Servy.GenericServer
-	
 	# Client Interface
 	
 	def start do
