@@ -73,6 +73,8 @@ alias Servy.PledgeServer
 
 #send pid, {:stop, "hammertime"}
 
+PledgeServer.set_cache_size(4)
+
 IO.inspect PledgeServer.create_pledge("larry", 10)
 
 PledgeServer.clear()
