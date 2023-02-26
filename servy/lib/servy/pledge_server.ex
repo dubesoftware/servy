@@ -54,6 +54,8 @@ defmodule Servy.PledgeServer do
   end
 end
 
+alias Servy.PledgeServer
+
 pid = PledgeServer.start()
 
 IO.inspect PledgeServer.create_pledge("larry", 10)
