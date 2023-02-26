@@ -33,7 +33,7 @@ end
 
 defmodule Servy.PledgeServerHandRolled do
 	
-	@name __MODULE__
+	@name :pledge_server_hand_rolled
 	
 	alias Servy.GenericServer
 	
