@@ -1,6 +1,8 @@
 defmodule Servy.PledgeServer do
 	
 	@name :pledge_server
+
+	use GenServer
 	
 	# Client Interface
 	
