@@ -50,6 +50,7 @@ defmodule Servy.PledgeServer do
     {:ok, id} = send_pledge_to_service(name, amount)
 		most_recent_pledges = Enum.take(state.pledges, state.cache_size - 1)
     cached_pledges = [ {name, amount} | most_recent_pledges ]
+		new_state = %{ state | pledges: cached_pledges }
 		{:reply, id, new_state}
 	end
 
