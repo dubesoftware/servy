@@ -66,6 +66,8 @@ alias Servy.PledgeServer
 
 pid = PledgeServer.start()
 
+#send pid, {:stop, "hammertime"}
+
 IO.inspect PledgeServer.create_pledge("larry", 10)
 IO.inspect PledgeServer.create_pledge("moe", 20)
 IO.inspect PledgeServer.create_pledge("curly", 30)
