@@ -6,23 +6,23 @@ defmodule Servy.PledgeServer do
 	
 	def start do
 		IO.puts "Starting the pledge server..."
-		GenServer.start(__MODULE__, [], @name)
+		GenericServer.start(__MODULE__, [], @name)
 	end
 
   def create_pledge(name, amount) do
-    GenServer.call @name, {:create_pledge, name, amount}
+    GenericServer.call @name, {:create_pledge, name, amount}
   end
 
   def recent_pledges do
-		GenServer.call @name, :recent_pledges
+		GenericServer.call @name, :recent_pledges
   end
 	
   def total_pledged do
-		GenServer.call @name, :total_pledged
+		GenericServer.call @name, :total_pledged
   end
 	
 	def clear do
-		GenServer.cast @name, :clear
+		GenericServer.cast @name, :clear
 	end
 	
 	# Server Callbacks
