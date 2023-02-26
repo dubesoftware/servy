@@ -33,12 +33,12 @@ defmodule Servy.PledgeServer do
 		{:noreply, []}
 	end
 	
-	def handle_call(:total_pledged, state) do
+	def handle_call(:total_pledged, from, state) do
 		total = Enum.map(state, &elem(&1, 1)) |> Enum.sum
 		{:reply, total, state}
 	end
 	
-	def handle_call(:recent_pledges, state) do
+	def handle_call(:recent_pledges, from, state) do
 		{:reply, state, state}
 	end
 	
