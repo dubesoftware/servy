@@ -42,7 +42,7 @@ defmodule Servy.PledgeServer do
 		{:reply, state, state}
 	end
 	
-	def handle_call({:create_pledge, name, amount}, state) do
+	def handle_call({:create_pledge, name, amount}, _from, state) do
     {:ok, id} = send_pledge_to_service(name, amount)
 		most_recent_pledges = Enum.take(state, 2)
     new_state = [{name, amount} | most_recent_pledges]
