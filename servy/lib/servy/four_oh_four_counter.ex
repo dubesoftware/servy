@@ -2,6 +2,8 @@ defmodule Servy.FourOhFourCounter do
 
   @name :four_oh_four_counter
 
+  use GenServer
+
   # Client Interface
 
   def start do
