@@ -69,6 +69,11 @@ defmodule Servy.PledgeServer do
 		{:reply, id, new_state}
 	end
 
+	def handle_info(message, state) do
+		IO.puts "Can't touch this! #{inspect message}"
+		{:noreply, state}
+	end
+
   defp send_pledge_to_service(_name, _amount) do
 		# Send pledge to external service
     {:ok, "pledge-#{:rand.uniform(1000)}"}
@@ -86,7 +91,7 @@ alias Servy.PledgeServer
 
 {:ok, pid} = PledgeServer.start()
 
-#send pid, {:stop, "hammertime"}
+send pid, {:stop, "hammertime"}
 
 PledgeServer.set_cache_size(4)
 
