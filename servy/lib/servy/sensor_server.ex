@@ -16,4 +16,9 @@ defmodule Servy.SensorServer do
 
   # Server Callbacks
 
+  def init(_state) do
+    initial_state = run_tasks_to_get_sensor_data()
+    {:ok, initial_state}
+  end
+
 end
