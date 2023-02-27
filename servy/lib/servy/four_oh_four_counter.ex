@@ -29,6 +29,10 @@ defmodule Servy.FourOhFourCounter do
 
   # Server Callbacks
 
+  def init(state) do
+    {:ok, state}
+  end
+
   def handle_call({:bump_count, path}, _from, state) do
     new_state = Map.update(state, path, 1, &(&1 + 1))
     {:reply, :ok, new_state}
