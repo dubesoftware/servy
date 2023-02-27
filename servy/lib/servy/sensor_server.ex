@@ -6,9 +6,7 @@ defmodule Servy.SensorServer do
 
   # Client Interface
 
-  def start do
-    GenServer.start(__MODULE__, %{}, name: @name)
-  end
+  
 
   # Server Callbacks
 
