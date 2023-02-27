@@ -36,6 +36,10 @@ defmodule Servy.PledgeServer do
 	end
 	
 	# Server Callbacks
+
+	def init(state) do
+		{:ok, state}
+	end
 	
 	def handle_cast(:clear, state) do
 		{:noreply, %{ state | pledges: [] }}
