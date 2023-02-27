@@ -8,23 +8,23 @@ defmodule Servy.FourOhFourCounter do
 
   def start do
     IO.puts "Starting the 404 counter..."
-    GenericServer.start(__MODULE__, %{}, @name)
+    GenServer.start(__MODULE__, %{}, @name)
   end
 
   def bump_count(path) do
-    GenericServer.call @name, {:bump_count, path}
+    GenServer.call @name, {:bump_count, path}
   end
 
   def get_counts do
-    GenericServer.call @name, :get_counts
+    GenServer.call @name, :get_counts
   end
 
   def get_count(path) do
-    GenericServer.call @name, {:get_count, path}
+    GenServer.call @name, {:get_count, path}
   end
 
   def reset do
-    GenericServer.cast @name, :reset
+    GenServer.cast @name, :reset
   end
 
   # Server Callbacks
