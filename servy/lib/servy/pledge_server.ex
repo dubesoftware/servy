@@ -40,7 +40,7 @@ defmodule Servy.PledgeServer do
 	def init(state) do
 		pledges = fetch_recent_pledges_from_service()
 		new_state = %{ state | pledges: pledges }
-		{:ok, state}
+		{:ok, new_state}
 	end
 	
 	def handle_cast(:clear, state) do
