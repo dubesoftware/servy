@@ -44,6 +44,6 @@ defmodule Servy.FourOhFourCounter do
   end
 
   def handle_cast(:reset, _state) do
-    %{}
+    {:noreply, %{}}
   end
 end
