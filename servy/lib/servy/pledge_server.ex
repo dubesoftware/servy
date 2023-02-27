@@ -38,6 +38,8 @@ defmodule Servy.PledgeServer do
 	# Server Callbacks
 
 	def init(state) do
+		pledges = fetch_recent_pledges_from_service()
+		new_state = %{ state | pledges: pledges }
 		{:ok, state}
 	end
 	
