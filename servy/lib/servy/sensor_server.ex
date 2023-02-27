@@ -4,4 +4,10 @@ defmodule Servy.SensorServer do
 
   use GenServer
 
+  # Client Interface
+
+  
+
+  # Server Callbacks
+
 end
