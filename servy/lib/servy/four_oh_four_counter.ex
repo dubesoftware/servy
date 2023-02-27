@@ -31,16 +31,16 @@ defmodule Servy.FourOhFourCounter do
 
   def handle_call({:bump_count, path}, _from, state) do
     new_state = Map.update(state, path, 1, &(&1 + 1))
-    {:ok, new_state}
+    {:reply, :ok, new_state}
   end
 
   def handle_call(:get_counts, _from, state) do
-    {state, state}
+    {:reply, state, state}
   end
 
   def handle_call({:get_count, path}, _from, state) do
     count = Map.get(state, path, 0)
-    {count, state}
+    {:reply, count, state}
   end
 
   def handle_cast(:reset, _state) do
