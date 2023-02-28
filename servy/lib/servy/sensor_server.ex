@@ -1,4 +1,5 @@
-defmodule Servy.SensorServer do  
+defmodule Servy.SensorServer do
+  
   @name :sensor_server
 
   use GenServer
@@ -38,4 +39,5 @@ defmodule Servy.SensorServer do
 
     %{snapshots: snapshots, location: where_is_bigfoot}
   end
+
 end
