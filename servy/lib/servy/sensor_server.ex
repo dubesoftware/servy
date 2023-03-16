@@ -18,6 +18,7 @@ defmodule Servy.SensorServer do
 
   def init(_state) do
     initial_state = run_tasks_to_get_sensor_data()
+    Process.send_after(self(), :refresh, :timer.seconds(5))
     {:ok, initial_state}
   end
 
