@@ -13,6 +13,7 @@ defmodule Servy.SensorServer do
   # Client Interface
 
   def start do
+    IO.puts "Starting the sensor server..."
     GenServer.start(__MODULE__, %{}, name: @name)
   end
 
