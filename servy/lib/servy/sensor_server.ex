@@ -22,6 +22,10 @@ defmodule Servy.SensorServer do
     {:ok, initial_state}
   end
 
+  def handle_info(:refresh, _state) do
+    IO.puts "Refreshing the cache..."
+  end
+
   def handle_call(:get_sensor_data, _from, state) do
     {:reply, state, state}
   end
