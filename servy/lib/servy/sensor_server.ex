@@ -25,6 +25,7 @@ defmodule Servy.SensorServer do
   def handle_info(:refresh, _state) do
     IO.puts "Refreshing the cache..."
     new_state = run_tasks_to_get_sensor_data()
+    Process.send_after(self(), :refresh, :timer.seconds(5))
     {:noreply, new_state}
   end
 
