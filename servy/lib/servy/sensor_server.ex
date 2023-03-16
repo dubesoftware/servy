@@ -52,8 +52,8 @@ defmodule Servy.SensorServer do
     {:noreply, state}
   end
 
-  defp schedule_refresh do
-    Process.send_after(self(), :refresh, @refresh_interval)
+  defp schedule_refresh(time_in_ms) do
+    Process.send_after(self(), :refresh, time_in_ms)
   end
 
   def handle_call(:get_sensor_data, _from, state) do
