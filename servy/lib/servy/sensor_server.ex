@@ -21,6 +21,10 @@ defmodule Servy.SensorServer do
     GenServer.call @name, :get_sensor_data
   end
 
+  def set_refresh_interval(time_in_ms) do
+    GenServer.cast @name, {:set_refresh_interval, time_in_ms}
+  end
+
   # Server Callbacks
 
   def init(_state) do
