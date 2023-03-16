@@ -34,11 +34,6 @@ defmodule Servy.SensorServer do
     {:ok, initial_state}
   end
 
-  def handle_cast({:set_refresh_interval, time_in_ms}, state) do
-    new_state = %{ state | refresh_interval: time_in_ms }
-    {:noreply, new_state}
-  end
-
   def handle_info(:refresh, _state) do
     IO.puts "Refreshing the cache..."
     new_state = run_tasks_to_get_sensor_data()
