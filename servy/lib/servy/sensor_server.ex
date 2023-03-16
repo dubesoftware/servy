@@ -57,7 +57,7 @@ defmodule Servy.SensorServer do
   end
 
   def handle_call(:get_sensor_data, _from, state) do
-    {:reply, state, state}
+    {:reply, state.sensor_data, state}
   end
 
   defp run_tasks_to_get_sensor_data do
