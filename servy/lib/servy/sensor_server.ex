@@ -27,9 +27,10 @@ defmodule Servy.SensorServer do
 
   # Server Callbacks
 
-  def init(_state) do
-    initial_state = run_tasks_to_get_sensor_data()
-    schedule_refresh()
+  def init(state) do
+    sensor_data = run_tasks_to_get_sensor_data()
+    initial_state = %{state | sensor_data: sensor_data}
+    schedule_refresh(state.refresh_interval)
     {:ok, initial_state}
   end
 
