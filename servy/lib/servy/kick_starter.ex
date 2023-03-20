@@ -20,6 +20,10 @@ defmodule Servy.KickStarter do
     {:ok, server_pid}
   end
 
+  def handle_call(:get_server, _from, state) do
+    {:reply, state, state}
+  end
+
   def handle_info({:EXIT, _pid, reason}, _state) do
     IO.puts "HttpServer exited (#{inspect reason})"
     server_pid = start_server()
