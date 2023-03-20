@@ -6,6 +6,10 @@ defmodule Servy.KickStarter do
     GenServer.start(__MODULE__, :ok, name: __MODULE__)
   end
 
+  def get_server do
+    GenServer.call __MODULE__, :get_server
+  end
+
   def init(:ok) do
     Process.flag(:trap_exit, true)
     server_pid = start_server()
