@@ -1,6 +1,8 @@
 defmodule Servy.KickStarter do
   use GenServer
 
+  # Client Interface
+
   def start do
     IO.puts "Starting the kickstarter..."
     GenServer.start(__MODULE__, :ok, name: __MODULE__)
@@ -9,6 +11,8 @@ defmodule Servy.KickStarter do
   def get_server do
     GenServer.call __MODULE__, :get_server
   end
+
+  # Server Callbacks
 
   def init(:ok) do
     Process.flag(:trap_exit, true)
