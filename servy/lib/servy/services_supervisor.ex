@@ -1,3 +1,3 @@
-defmodule ServicesSupervisor do
+defmodule Servy.ServicesSupervisor do
   use Supervisor
 end
