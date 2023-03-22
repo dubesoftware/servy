@@ -5,6 +5,11 @@ defmodule Servy.SensorServer do
 
   use GenServer
 
+  defmodule State do
+    defstruct sensor_data: %{},
+              refresh_interval: :timer.minutes(60)
+  end
+
   # Client Interface
 
   def start_link(interval) do
