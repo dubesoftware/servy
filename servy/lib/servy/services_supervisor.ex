@@ -9,8 +9,7 @@ defmodule Servy.ServicesSupervisor do
   def init(:ok) do
     children = [
       Servy.PledgeServer,
-      {Servy.SensorServer, 60},
-      Servy.FourOhFourCounter
+      {Servy.SensorServer, 60}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
