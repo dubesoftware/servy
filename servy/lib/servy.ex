@@ -1,7 +1,5 @@
 defmodule Servy do
-  def hello(name \\ "world") do
-    "Howdy, #{name}!"
-  end
+  use Application
 end
 
 # IO.puts Servy.hello("Elixir")
