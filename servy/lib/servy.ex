@@ -6,3 +6,5 @@ defmodule Servy do
     Servy.Supervisor.start_link()
   end
 end
+
+# IO.puts Servy.hello("Elixir")
